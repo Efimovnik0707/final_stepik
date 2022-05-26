@@ -8,12 +8,16 @@ class ProductPage(BasePage):
         add_cart.click()
     
     def should_be_same_price(self):
-        self.original_price = self.is_element_present(*ProductPageLocators.ORIGINAL_PRICE)
-        self.cart_price = self.is_element_present(*ProductPageLocators.CART_PRICE)
-        assert self.original_price == self.cart_price, "Different price"
+        self.text_price = self.browser.find_element(*ProductPageLocators.PRICE_TEXT)
+        self.cart_price = self.browser.find_element(*ProductPageLocators.CART_PRICE)
+        text_price = self.text_price.text
+        cart_price = self.cart_price.text
+        assert text_price == cart_price, "Different price"
         
     def should_be_same_item_name(self):
-        self.original_name = self.is_element_present(*ProductPageLocators.ORIGINAL_NAME)
-        self.cart_name = self.is_element_present(*ProductPageLocators.CART_NAME)
-        assert self.original_name == self.cart_name, "Different name"  
+        self.text_cart = self.browser.find_element(*ProductPageLocators.CART_TEXT)
+        self.cart_name = self.browser.find_element(*ProductPageLocators.CART_NAME)
+        text_cart = self.text_cart.text
+        cart_name = self.cart_name.text
+        assert text_cart == cart_name, "Different name"  
     
