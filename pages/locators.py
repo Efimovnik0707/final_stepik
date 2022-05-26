@@ -14,3 +14,4 @@ class ProductPageLocators():
     PRICE_TEXT = (By.CSS_SELECTOR, "div.alertinner > p:nth-child(1) strong")
     CART_TEXT = (By.CSS_SELECTOR, "#messages > div:nth-child(1) > div > strong")
     CART_NAME = (By.CSS_SELECTOR, "#content_inner h1")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages div:nth-child(1) div")

@@ -5,23 +5,42 @@ import time
 import pytest
 
 
-@pytest.mark.parametrize('link', ['offer0', 'offer1', 'offer2', 'offer3', 'offer4',
-                                  'offer5', 'offer6', pytest.param("offer7", marks=pytest.mark.xfail), 'offer8', 'offer9'])
-def test_guest_can_add_product_to_basket(browser,link):
-     link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo={link}"
+# @pytest.mark.parametrize('link', ['offer0', 'offer1', 'offer2', 'offer3', 'offer4',
+#                                   'offer5', 'offer6', pytest.param("offer7", marks=pytest.mark.xfail), 'offer8', 'offer9'])
+# def test_guest_can_add_product_to_basket(browser,link):
+#      link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo={link}"
+#      page = MainPage(browser, link)   
+#      page.open()                             
+#      product_page = ProductPage(browser, browser.current_url) 
+#      product_page.should_add_to_card ()
+#      product_page.solve_quiz_and_get_code ()
+#      time.sleep (5)
+#      product_page.should_be_same_price ()
+#      product_page.should_be_same_item_name ()
+     
+@pytest.mark.xfail
+def test_guest_cant_see_success_message_after_adding_product_to_basket (browser):
+     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
      page = MainPage(browser, link)   
      page.open()                             
      product_page = ProductPage(browser, browser.current_url) 
      product_page.should_add_to_card ()
-     product_page.solve_quiz_and_get_code ()
-     time.sleep (5)
-     product_page.should_be_same_price ()
-     product_page.should_be_same_item_name ()
+     product_page.should_not_be_success_message ()
      
 
-   
+def test_guest_cant_see_success_message (browser):
+     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+     page = MainPage(browser, link)   
+     page.open()                             
+     product_page = ProductPage(browser, browser.current_url) 
+     product_page.should_not_be_success_message ()
 
-
-
-     
+@pytest.mark.xfail
+def test_message_disappeared_after_adding_product_to_basket (browser):
+     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+     page = MainPage(browser, link)   
+     page.open()                             
+     product_page = ProductPage(browser, browser.current_url) 
+     product_page.should_add_to_card ()
+     product_page.should_dissapear_of_success_message ()
 
