@@ -6,7 +6,6 @@ class BasketPage(BasePage):
     def should_be_basket_page(self):
         self.should_be_basket_url()
         self.should_be_basket_name()  
-    
         
     def should_be_basket_name(self):
         assert self.is_element_present(*BasketPageLocators.BASKET_NAME), "This is not basket"    

@@ -18,8 +18,7 @@ class BasePage ():
         
     def go_basket_page(self):
         link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
-        link.click()   
-        
+        link.click()    
         
     def is_element_present(self, how, what):
         try:
@@ -33,7 +32,6 @@ class BasePage ():
          WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return True
-
         return False
     
     def is_disappeared(self, how, what, timeout=15):
@@ -42,7 +40,6 @@ class BasePage ():
                 until_not(EC.presence_of_element_located((how, what)))
         except TimeoutException:
             return False
-
         return True
     
     def open(self):
